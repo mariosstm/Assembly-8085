@@ -1,0 +1,40 @@
+;<Program title>
+;AM=1066488
+;K=X1/Z=06/Y=64/X=88
+;<ΕΡΩΤΗΜΑ Α >
+FILLA: LXI H,2202H
+            MVI B,90H
+            MVI C,9BH
+            MVI A,33H
+
+LOOP: ADD B
+            MOV M,A
+            INX H 
+            INR B
+            ADD B
+            DCR C
+            JNZ LOOP
+            JZ SERIES
+SERIES: LXI H,2200H
+              MOV M,A
+              
+             
+
+;<ΕΡΩΤΗΜΑ B >
+FILLB:LXI H,2202H
+	  MVI B,00H
+	  MVI C,9BH
+      MVI A,06H    
+RESETLOOP:MOV B,M
+		  JZ REPLACE
+          CMP M
+          JZ REPLACE
+          INX H
+          DCR C
+          JNZ RESETLOOP
+REPLACE:MVI A,06H
+		MVI B,01H
+		SUB B
+        MOV M,A
+TELOS:HLT  
+ 	       
